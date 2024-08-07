@@ -73,8 +73,8 @@ ul li::before{
     background-image: url(unchecked.png);
     background-size: cover;
     background-position: center;
-    top: 50%; /* Center vertically */
-    left: 20px; /* Position from the left */
+    top: 50%;
+    left: 20px; 
     transform: translateY(-50%);
 }
 ul li.checked{
