@@ -1,8 +1,9 @@
 const inputBox = document.getElementById("input-box");
 const listContainer = document.getElementById("list-container");
+const addButton = document.getElementById("add-button");
 
 function addTask() {
-    if (inputBox.value.trim() === '') { // Use trim to avoid whitespace-only input
+    if (inputBox.value.trim() === '') {
         alert("You must write something!");
     } else {
         let li = document.createElement("li");
@@ -10,7 +11,7 @@ function addTask() {
         listContainer.appendChild(li);
         
         let span = document.createElement("span");
-        span.innerHTML = "\u00d7"; // Unicode for multiplication sign (×)
+        span.innerHTML = "\u00d7";
         li.appendChild(span);
 
         inputBox.value = ''; // Clear the input box after adding the task
@@ -29,18 +30,20 @@ listContainer.addEventListener("click", function(e) {
 }, false);
 
 function saveData() {
-    localStorage.setItem("data", listContainer.innerHTML); // Fixed typo here
+    localStorage.setItem("data", listContainer.innerHTML);
 }
 
 function showTask() {
-    listContainer.innerHTML = localStorage.getItem("data") || ''; // Fixed typo here and added fallback
+    listContainer.innerHTML = localStorage.getItem("data") || '';
 }
 
 showTask();
 
 inputBox.addEventListener('keypress', function(event) {
     if (event.key === 'Enter') {
-        event.preventDefault(); // Prevent default behavior (like form submission)
-        addTask(); // Fixed function name
+        event.preventDefault();
+        addTask();
     }
 });
+
+addButton.addEventListener("click", addTask);
